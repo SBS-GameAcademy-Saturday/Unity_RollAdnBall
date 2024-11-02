@@ -10,7 +10,7 @@ public class Move : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector3(0,0,-6);
+
     }
 
     // Update is called once per frame
@@ -21,34 +21,60 @@ public class Move : MonoBehaviour
         if (Input.GetKey(KeyCode.W))// 앞으로 이동한다.
         {
             moveDirection.z = 1;
-            Debug.Log("W키를 입력했습니다.");
         }
         if (Input.GetKey(KeyCode.A))// 왼쪽으로 이동한다.
         {
             moveDirection.x = -1;
-            Debug.Log("A키를 입력했습니다.");
         }
         if (Input.GetKey(KeyCode.S))// 뒤로 이동한다.
         {
             moveDirection.z = -1;
-            Debug.Log("S키를 입력했습니다.");
         }
         if (Input.GetKey(KeyCode.D))// 오른쪽로 이동한다.
         {
             moveDirection.x = 1;
-            Debug.Log("D키를 입력했습니다.");
         }
         if (Input.GetKey(KeyCode.Q))// 위로 이동한다.
         {
             moveDirection.y = -1;
-            Debug.Log("Q키를 입력했습니다.");
         }
         if (Input.GetKey(KeyCode.E))// 아래로 이동한다.
         {
             moveDirection.y = 1;
-            Debug.Log("E키를 입력했습니다.");
         }
 
         transform.position += moveDirection * Time.deltaTime;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log($"{transform.gameObject.name} Collision Enter To {collision.gameObject.name}");
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        Debug.Log($"{transform.gameObject.name} Collision Stay To {collision.gameObject.name}");
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        Debug.Log($"{transform.gameObject.name} Collision Exit To {collision.gameObject.name}");
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log($"{transform.gameObject.name} Treiger Enter To {other.gameObject.name}");
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        Debug.Log($"{transform.gameObject.name} Treiger Stay To {other.gameObject.name}");
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        Debug.Log($"{transform.gameObject.name} Treiger Exit To {other.gameObject.name}");
+    }
+
+
 }

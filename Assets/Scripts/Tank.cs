@@ -7,7 +7,7 @@ public class Tank : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -18,24 +18,26 @@ public class Tank : MonoBehaviour
         if (Input.GetKey(KeyCode.W))// 앞으로 이동한다.
         {
             moveDirection.z = 1;
-            Debug.Log("W키를 입력했습니다.");
         }
         if (Input.GetKey(KeyCode.A))// 왼쪽으로 이동한다.
         {
             moveDirection.x = -1;
-            Debug.Log("A키를 입력했습니다.");
         }
         if (Input.GetKey(KeyCode.S))// 뒤로 이동한다.
         {
             moveDirection.z = -1;
-            Debug.Log("S키를 입력했습니다.");
         }
         if (Input.GetKey(KeyCode.D))// 오른쪽로 이동한다.
         {
             moveDirection.x = 1;
-            Debug.Log("D키를 입력했습니다.");
         }
 
-        transform.position += moveDirection * Time.deltaTime;
+        //transform.Translate(moveDirection * Time.deltaTime);
+
+        //transform.position = 
+        //    Vector3.MoveTowards(transform.position, transform.position + (moveDirection), Time.deltaTime);
+
+        transform.position += transform.TransformDirection(moveDirection * Time.deltaTime);
+        //transform.Translate += moveDirection * Time.deltaTime;
     }
 }
