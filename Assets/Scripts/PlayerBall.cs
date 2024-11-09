@@ -44,7 +44,7 @@ public class PlayerBall : MonoBehaviour
         {
             moveDirection.x = 1;
         }
-        _rigidbody.AddForce(moveDirection * _forcePower);
+        _rigidbody.AddForce(moveDirection * _forcePower, ForceMode.Impulse);
     }
 
     private void Jump()
@@ -53,7 +53,7 @@ public class PlayerBall : MonoBehaviour
         {
             _isJumped = true;
             _audioSource.Play();
-            _rigidbody.AddForce(Vector3.up * _jumpForcePower);
+            _rigidbody.AddForce(Vector3.up * _jumpForcePower,ForceMode.Impulse);
         }
     }
 

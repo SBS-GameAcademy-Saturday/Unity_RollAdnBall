@@ -25,6 +25,7 @@ public class Item : MonoBehaviour
         {
             //_audioSource.PlayOneShot(_audioSource.clip);
             AudioSource.PlayClipAtPoint(_audioSource.clip, transform.position,_audioSource.volume);
+            GameManager.Instance.IncreasePlayerScore(10);
             Destroy(gameObject);
         }
     }
